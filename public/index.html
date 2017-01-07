@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Node-Express-MongoDB</title>
+    <style>
+    input {
+        display: block;
+        font-size: 24px;
+        height: 36px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Register</h1>
+    <form>
+        <input type="text" name="username" placeholder="username" id="signup-username">
+        <input type="text" name="password" placeholder="At least 6 characters" id="signup-password">
+        <button id="signup">Submit</button>
+    </form>
+    <h1>Login</h1>
+    <form>
+        <input type="text" name="username" placeholder="username" id="login-username">
+        <input type="text" name="password" placeholder="your password goes here" id="login-password">
+        <button id="login">Login</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script src="app.js"></script>
+ --></body>
+    <script>
+    // define sign in function
+    function signUp(){
+        // grab data from form
+        var data = {
+            username: $('#signup-username').val().trim(),
+            password: $('#signup-password').val().trim()
+        }
+        // grab url to ajax call
+        var currentURL = "/signup";
+
+        // post our login data
+        $.post(currentURL, data, function(results){
+            console.log(results);
+        });
+    }
+
+    function logIn(){
+        // grab data from form
+        var data = {
+            username: $('#login-username').val().trim(),
+            password: $('#login-password').val().trim()
+        }
+        // grab url to ajax call
+        var currentURL = "/login";
+
+        // post our login data
+        $.post(currentURL, data, function(results){
+            console.log(results);
+        });
+    }
+
+    // define call on button
+    $(document).on('click', '#signup', function(){
+        // sign in
+        signUp();
+        // prevent default behavior
+        return false;
+    })
+
+    $(document).on('click', '#login', function(){
+        // sign in
+        logIn();
+        // prevent default behavior
+        return false;
+    })
+
+    </script>
+
+</html>
